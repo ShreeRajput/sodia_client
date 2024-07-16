@@ -63,7 +63,7 @@ export default function Rightbar({user,setIsBioChanged}) {
       return (
           <>
               <div className="birthdayContainer" onClick={()=>setShowBirthdayList(prev=>!prev)}>
-                  <img className="birthdayImg" src={PF + "gift.png"} alt="Gift" />
+                  <img className="birthdayImg" src={PF+"assets/" + "gift.png"} alt="Gift" />
                   <span className="birthdayText">
                     <b>{birthdayFrds.length!==0 ? birthdayFrds.length:"No"} Sodia friends</b> have a <b>birthday</b> today, 
                         Let's {birthdayFrds.length!==0 ? "wish them!" : "invite new friends!"}
@@ -78,7 +78,7 @@ export default function Rightbar({user,setIsBioChanged}) {
                           <div className="birthdayFriendImgContainer">
                             <img  
                               className="birthdayFriendImg"
-                              src={u.profilePicture || PF + 'person/noAvatar.png'} 
+                              src={u.profilePicture || PF +"assets/" + 'person/noAvatar.png'} 
                               alt="friend_picture" 
                             />
                           </div>
@@ -89,7 +89,7 @@ export default function Rightbar({user,setIsBioChanged}) {
                   }
                 </ul>
               }
-              <img className="rightbarAd" src={PF+"advertize.jpg"} alt="advertiseImage" />
+              <img className="rightbarAd" src={PF+"assets/"+"advertize.jpg"} alt="advertiseImage" />
               <h4 className="rightbarTitle" style={{marginBottom:"20px"}}>Top Sodians</h4>
               <Online />
           </>
