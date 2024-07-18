@@ -29,17 +29,20 @@ export default function Settings({ position }) {
           setError("Passwords do not match!");
           return;
         }
+        setIsDeleting(true)
 
         axios.put(backendUrl+'/users/changePass/'+userLogged.details._id, { userId: userLogged.details._id,password:currentPassword,newPassword: newPassword.pass })
           .then(response => {
             if(response.data.isCorrect === true) {
+                setIsDeleting(true)
                 alert("Password updated successfully!");
                 setShowChangePassword(false);
             } else {
+              setIsDeleting(true)
               setError("Password is incorrect!");
             }
           })
-          .catch(error => console.log(error));
+          .catch(error => {console.log(error);setIsDeleting(true);});
     }
 
     const handleDelete = (e)=>{
@@ -52,6 +55,7 @@ export default function Settings({ position }) {
                 setShowDeleteAcc(false)
                 handleLogout()
             } else {
+              setIsDeleting(false)
               setError("Password is incorrect!");
             }
           })
@@ -121,7 +125,9 @@ export default function Settings({ position }) {
                   </div>
                   <div className="modalButtons">
                     <button type="button" onClick={() => setShowChangePassword(false)}>Cancel</button>
-                    <button type="submit" className='confirmBtn'>Confirm</button>
+                    <button type="submit" className='confirmBtn'>
+                        {isDeleting ? <div className="spinner"></div> : "Confirm"}
+                    </button>
                   </div>
                 </form>
             </>

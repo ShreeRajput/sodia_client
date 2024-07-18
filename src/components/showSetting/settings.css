@@ -149,6 +149,9 @@
 
 .modals button.confirmBtn {
   background:rgb(2, 92, 2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .modals button.confirmBtn:hover {
