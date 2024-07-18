@@ -17,7 +17,7 @@ export default function ForgotPassword ({setShowForgotPass}) {
         e.preventDefault()
         setError('')
         setIsVerifying(true)
-        axios.post(backendUrl+'/auth/verifyOtp',{email:forgotEmail,otp:otp})
+        axios.post(backendUrl+'/auth/verifyOtp',{email:forgotEmail,otp:otp,type:"login"})
           .then(response=>{
               setIsVerifying(false)
               setShowOtpUi(false)
