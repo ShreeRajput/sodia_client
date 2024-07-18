@@ -38,11 +38,11 @@ export default function Settings({ position }) {
                 alert("Password updated successfully!");
                 setShowChangePassword(false);
             } else {
-              setIsDeleting(true)
+              setIsDeleting(false)
               setError("Password is incorrect!");
             }
           })
-          .catch(error => {console.log(error);setIsDeleting(true);});
+          .catch(error => {console.log(error);setIsDeleting(false);});
     }
 
     const handleDelete = (e)=>{
@@ -125,7 +125,7 @@ export default function Settings({ position }) {
                   </div>
                   <div className="modalButtons">
                     <button type="button" onClick={() => setShowChangePassword(false)}>Cancel</button>
-                    <button type="submit" className='confirmBtn'>
+                    <button type="submit" className='confirmBtn' disabled={isDeleting} >
                         {isDeleting ? <div className="spinner"></div> : "Confirm"}
                     </button>
                   </div>
