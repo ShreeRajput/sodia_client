@@ -148,8 +148,8 @@ export default function Rightbar({user,setIsBioChanged}) {
               <div className="rightbarInfoItem">
                 <span className="rightbarInfoKey">SocialLink :</span>
                 <a 
-                  href={(user._id === loggedUser?.details._id ? profile?.socialLink : user.socialLink).startsWith('http') ? (user._id === loggedUser?.details._id ? profile?.socialLink 
-                    : user.socialLink) : `https://${user._id === loggedUser?.details._id ? profile?.socialLink : user.socialLink}`} 
+                  href={(user._id === loggedUser?.details._id ? profile?.socialLink : user.socialLink)?.startsWith('http') ? (user._id === loggedUser?.details._id ? profile?.socialLink: user.socialLink) 
+                          : `https://${user._id === loggedUser?.details._id ? profile?.socialLink : user.socialLink}`} 
                   target="_blank" 
                   style={{textDecoration: 'none'}}
                 >
