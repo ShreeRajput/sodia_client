@@ -113,9 +113,12 @@ function Messenger() {
             alert("select friend first to start conversation")
             return null
         }
+
+        const receiverId = currentConv.members.find(ele=> ele!==user.details._id)
         axios.post(backendUrl+'/message',{
                 "conversationId" : currentConv._id,
                 "sender" : user.details._id,
+                "receiver" : receiverId,
                 "text" : msg
             })
             .then(response =>{
@@ -126,7 +129,6 @@ function Messenger() {
                 console.error(error);
             })
 
-        const receiverId = currentConv.members.find(ele=> ele!==user.details._id)
         socket.current.emit("sendMessage",{
             senderId : user.details._id,
             receiverId,

@@ -147,7 +147,11 @@ export default function Rightbar({user,setIsBioChanged}) {
               </div>
               <div className="rightbarInfoItem">
                 <span className="rightbarInfoKey">SocialLink :</span>
-                <span className="rightbarInfoValue">{user._id === loggedUser?.details._id ? profile?.socialLink : user.socialLink}</span>
+                <a href={user._id === loggedUser?.details._id ? profile?.socialLink : user.socialLink} target="_blank">
+                  <span className="rightbarInfoValue" style={{ color: 'blue', textDecoration: 'none', cursor: 'pointer'}}>
+                    {user._id === loggedUser?.details._id ? profile?.socialLink : user.socialLink}
+                  </span>
+                </a>
               </div>
             </div>
 
