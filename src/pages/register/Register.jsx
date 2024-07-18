@@ -41,6 +41,7 @@ export default function Register() {
       setIsPosting(true)
 
       if (password.current.value !== cPassword.current.value) {
+        setIsPosting(false)
         return setIsPasswordMatch("Passwords do not match!");
       } else {
         setIsPasswordMatch('')
