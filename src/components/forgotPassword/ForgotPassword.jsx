@@ -31,6 +31,7 @@ export default function ForgotPassword ({setShowForgotPass}) {
 
     const handleForgotPass = (e)=> {
         e.preventDefault()
+        setError('')
         setIsVerifying(true)
         axios.get(backendUrl+'/auth/forgotpass/'+forgotEmail)
           .then(response=> {
@@ -39,6 +40,8 @@ export default function ForgotPassword ({setShowForgotPass}) {
           })
           .catch(error=>{
             console.log(error.response)
+            setIsVerifying(false)
+            setError('No Account with this email !')
           })
     }
 

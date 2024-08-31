@@ -82,6 +82,11 @@ export default function Post({ post }) {
     return url.match(/\.(jpeg|jpg|gif|png)$/i);
   }
 
+  const handleLocationClick = (searchText)=> {
+    const searchUrl = `https://www.google.com/search?q=${encodeURIComponent(searchText)}`;
+    window.open(searchUrl, '_blank');
+  }
+
   return (
     <div className="post">
       <div className="postWrapper">
@@ -143,8 +148,8 @@ export default function Post({ post }) {
 
         {(post.tags || post.location) && (
           <div className="shareSelectedTagsLocation">
-            {post.location && <div className="shareSelectedLocation"><span style={{ fontWeight: "500", color: "black" }}>Location: </span> <LocationOn htmlColor="green" className='postIcon' /> {post.location}</div>}
-            {post.tags && <div className="shareSelectedTags"><span style={{ fontWeight: "500", color: "black" }}>Tags:</span> <Label htmlColor="blue" className="postIcon" /> {post.tags}</div>}
+          {post.location && <div className="shareSelectedLocation"><span style={{ fontWeight: "500", color: "black" }}>Location: </span> <LocationOn htmlColor="green" className='postIcon' /> <span onClick={()=>handleLocationClick(post.location)} style={{cursor:"pointer"}}>{post.location}</span></div>}
+          {post.tags && <div className="shareSelectedTags"><span style={{ fontWeight: "500", color: "black" }}>Tags:</span> <Label htmlColor="blue" className="postIcon" /> {post.tags}</div>}
           </div>
         )}
 
