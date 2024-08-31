@@ -16,9 +16,20 @@ const AddTags = ({type,tags,setTags,location,setLocation,setShowTagWindow}) => {
     const [suggestions, setSuggestions] = useState([])
 
     const handleAddTags = () => {
-        const tag = tagRef.current.value
-        setTags(tag)
-        setShowTagWindow(false)
+        let tag = tagRef.current.value.replace(/\s+/g, '');
+        if (tag.length > 0) {
+            if (tag[0] !== '#' || tag.length === 1) {
+                return null;
+            }
+            // Remove the last '#' if it exists
+            if (tag[tag.length - 1] === '#') {
+                tag = tag.slice(0, -1)
+            }
+            setTags(tag); 
+        } else {
+            setTags([]); 
+        }
+        setShowTagWindow(false);
     };
 
     const handleQueryChange = async(e)=> {
