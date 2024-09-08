@@ -1,7 +1,7 @@
 .login {
     width: 100vw;
     height: 100vh;
-    background-color: #d4d4d4;
+    background-color: #e4e4e4;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -66,6 +66,10 @@
       display: flex;
       justify-content: center;
       align-items: center;
+}
+
+.loginButton:hover {
+  background-color: #a900a9;
 }
   
 .loginForgot{
